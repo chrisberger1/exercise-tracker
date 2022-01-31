@@ -1,0 +1,7 @@
+HTTP/1.1 400 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sun, 30 Jan 2022 19:20:31 GMT
+Connection: close
+
+{"timestamp":"2022-01-30T19:20:31.501+00:00","status":400,"error":"Bad Request","path":"/users"}
