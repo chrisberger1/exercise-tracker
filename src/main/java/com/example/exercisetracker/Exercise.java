@@ -1,5 +1,6 @@
 package com.example.exercisetracker;
 
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -18,6 +19,7 @@ public class Exercise {
     private int reps;
     private Integer weight;
     private int userId;
+    private Date date = new Date();
 
     Exercise() {}
 
@@ -53,6 +55,10 @@ public class Exercise {
         return userId;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -77,6 +83,10 @@ public class Exercise {
         this.userId = userId;
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -89,12 +99,13 @@ public class Exercise {
                 && this.status == exercise.status
                 && Objects.equals(this.reps, exercise.reps)
                 && Objects.equals(this.weight, exercise.weight)
-                && Objects.equals(this.userId, exercise.userId);
+                && Objects.equals(this.userId, exercise.userId)
+                && Objects.equals(this.date, exercise.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.id, this.description, this.status, this.reps, this.weight, this.userId);
+        return Objects.hash(this.id, this.description, this.status, this.reps, this.weight, this.userId, this.date);
     }
 
     @Override
@@ -104,6 +115,7 @@ public class Exercise {
                 + ", status=" + this.status
                 + ", reps=" + this.reps
                 + ", weight=" + this.weight
-                + ", userId=" + this.userId + " }";
+                + ", userId=" + this.userId
+                + ", date='" + this.date +"' }";
     }
 }

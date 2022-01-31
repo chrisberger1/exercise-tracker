@@ -14,8 +14,8 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(UserRepository userRepo, ExerciseRepository exerRepo) {
         return args -> {
-            userRepo.save(new User("Chris Berger", 73, 190));
-            userRepo.save(new User("Nick Berger", 70, 180));
+            userRepo.save(new User("Chris", 73, 190));
+            userRepo.save(new User("Nick", 70, 180));
 
             userRepo.findAll().forEach(user -> log.info("Preloaded " + user));
 
