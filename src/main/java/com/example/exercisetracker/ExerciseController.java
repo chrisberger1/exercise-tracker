@@ -1,6 +1,5 @@
 package com.example.exercisetracker;
 
-import org.apache.coyote.Response;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
