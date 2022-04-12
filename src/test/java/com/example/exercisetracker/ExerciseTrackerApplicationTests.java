@@ -109,6 +109,16 @@ class ExerciseTrackerApplicationTests {
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
+	// Test for deleting a user - should return 204 no content
+	@Test
+	public void deleteUser() throws Exception {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = new URL("http://localhost:" + port + "/users/1").toString();
+
+		ResponseEntity<String> response = restTemplate.exchange(baseUrl, HttpMethod.DELETE, null ,String.class);
+		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+	}
+
 	// TODO: figure out how to check if METHOD_NOT_ALLOWED response is returned
 	// Test for completing an in progress exercise - Should return method not allowed
 	@Test
