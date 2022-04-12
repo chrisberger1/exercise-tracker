@@ -43,12 +43,11 @@ class ExerciseTrackerApplicationTests {
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 
-	// Test updating user weight with PUT request
+	// Test updating user weight with PUT request - should return 201 created
 	@Test
 	public void changeUserWeight() throws Exception {
 		RestTemplate restTemplate = new RestTemplate();
 		String baseUrl = new URL("http://localhost:" + port + "/users/1").toString();
-		URI uri = new URI(baseUrl);
 		User user = new User("Chris", 73, 185);
 
 		HttpHeaders headers = new HttpHeaders();
