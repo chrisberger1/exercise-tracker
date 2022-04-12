@@ -43,6 +43,24 @@ class ExerciseTrackerApplicationTests {
 		assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
 	}
 
+	// Test updating user weight with PUT request
+	@Test
+	public void changeUserWeight() throws Exception {
+		RestTemplate restTemplate = new RestTemplate();
+		String baseUrl = new URL("http://localhost:" + port + "/users/1").toString();
+		URI uri = new URI(baseUrl);
+		User user = new User("Chris", 73, 185);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-type", "application/json");
+
+		HttpEntity<User> request = new HttpEntity<>(user, headers);
+
+		ResponseEntity<String> result = restTemplate.exchange(baseUrl, HttpMethod.PUT, request, String.class);
+
+		assertEquals(HttpStatus.CREATED, result.getStatusCode());
+	}
+
 	// TEST POST REQUEST ADD USER - SHOULD RETURN 201 CREATED
 	@Test
 	public void addUser() throws Exception {
