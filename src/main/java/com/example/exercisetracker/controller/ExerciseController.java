@@ -1,5 +1,10 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.controller;
 
+import com.example.exercisetracker.enums.Status;
+import com.example.exercisetracker.exception.ExerciseNotFoundException;
+import com.example.exercisetracker.models.Exercise;
+import com.example.exercisetracker.models.assemblers.ExerciseModelAssembler;
+import com.example.exercisetracker.repository.ExerciseRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
@@ -27,7 +32,7 @@ public class ExerciseController {
     }
 
     @GetMapping("/exercises")
-    CollectionModel<EntityModel<Exercise>> all() {
+    public CollectionModel<EntityModel<Exercise>> all() {
         List<EntityModel<Exercise>> exercises = exerciseRepository.findAll().stream() //
                 .map(assembler::toModel) //
                 .collect(Collectors.toList());
@@ -37,7 +42,7 @@ public class ExerciseController {
     }
 
     @GetMapping("/exercises/{id}")
-    EntityModel<Exercise> one(@PathVariable Long id) {
+    public EntityModel<Exercise> one(@PathVariable Long id) {
         Exercise exercise = exerciseRepository.findById(id) //
                 .orElseThrow(() -> new ExerciseNotFoundException(id));
 
@@ -45,7 +50,7 @@ public class ExerciseController {
     }
 
     @PostMapping("/exercises")
-    ResponseEntity<EntityModel<Exercise>> newExercise(@RequestBody Exercise exercise) {
+    public ResponseEntity<EntityModel<Exercise>> newExercise(@RequestBody Exercise exercise) {
         exercise.setStatus(Status.IN_PROGRESS);
         Exercise newExercise = exerciseRepository.save(exercise);
 
@@ -55,7 +60,7 @@ public class ExerciseController {
     }
 
     @DeleteMapping("/exercises/{id}/cancel")
-    ResponseEntity<?> cancel(@PathVariable Long id) {
+    public ResponseEntity<?> cancel(@PathVariable Long id) {
 
         Exercise exercise = exerciseRepository.findById(id) //
                 .orElseThrow(() -> new ExerciseNotFoundException(id));
@@ -74,7 +79,7 @@ public class ExerciseController {
     }
 
     @PutMapping("/exercises/{id}/complete")
-    ResponseEntity<?> complete(@PathVariable Long id) {
+    public ResponseEntity<?> complete(@PathVariable Long id) {
 
         Exercise exercise = exerciseRepository.findById(id) //
                 .orElseThrow(() -> new ExerciseNotFoundException(id));

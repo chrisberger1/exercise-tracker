@@ -1,5 +1,10 @@
 package com.example.exercisetracker;
 
+import com.example.exercisetracker.enums.Status;
+import com.example.exercisetracker.models.Exercise;
+import com.example.exercisetracker.models.User;
+import com.example.exercisetracker.repository.ExerciseRepository;
+import com.example.exercisetracker.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

@@ -1,5 +1,8 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.models.assemblers;
 
+import com.example.exercisetracker.enums.Status;
+import com.example.exercisetracker.controller.ExerciseController;
+import com.example.exercisetracker.models.Exercise;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

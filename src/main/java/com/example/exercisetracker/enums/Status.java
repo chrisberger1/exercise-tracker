@@ -1,4 +1,4 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.enums;
 
 public enum Status {
     IN_PROGRESS, //

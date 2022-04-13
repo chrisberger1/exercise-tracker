@@ -1,4 +1,6 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.models;
+
+import com.example.exercisetracker.enums.Status;
 
 import java.util.Date;
 import java.util.Objects;
@@ -23,7 +25,7 @@ public class Exercise {
 
     Exercise() {}
 
-    Exercise(String description, Status status, int reps, Integer weight, int userId) {
+    public Exercise(String description, Status status, int reps, Integer weight, int userId) {
         this.description = description;
         this.status = status;
         this.reps = reps;

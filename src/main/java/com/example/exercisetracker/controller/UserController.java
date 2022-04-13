@@ -1,5 +1,9 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.controller;
 
+import com.example.exercisetracker.models.User;
+import com.example.exercisetracker.models.assemblers.UserModelAssembler;
+import com.example.exercisetracker.exception.UserNotFoundException;
+import com.example.exercisetracker.repository.UserRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -26,7 +30,7 @@ public class UserController {
     // Aggregate root
 
     @GetMapping("/users")
-    CollectionModel<EntityModel<User>> all() {
+    public CollectionModel<EntityModel<User>> all() {
 
         List<EntityModel<User>> users = repo.findAll().stream() //
                 .map(assembler::toModel) //
@@ -48,7 +52,7 @@ public class UserController {
     // Single item
 
     @GetMapping("/users/{id}")
-    EntityModel<User> one(@PathVariable Long id) {
+    public EntityModel<User> one(@PathVariable Long id) {
         User user = repo.findById(id) //
                 .orElseThrow(() -> new UserNotFoundException(id));
         return assembler.toModel(user);

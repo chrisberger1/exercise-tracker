@@ -1,8 +1,8 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.exception;
 
 public class UserNotFoundException extends RuntimeException {
 
-    UserNotFoundException(Long id) {
+    public UserNotFoundException(Long id) {
         super("Could not find user " + id);
     }
 }

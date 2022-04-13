@@ -1,8 +1,8 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.exception;
 
 public class ExerciseNotFoundException extends RuntimeException {
 
-    ExerciseNotFoundException(Long id) {
+    public ExerciseNotFoundException(Long id) {
         super("Could not find exercise with id: " + id);
     }
 }

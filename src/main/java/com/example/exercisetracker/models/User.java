@@ -1,4 +1,4 @@
-package com.example.exercisetracker;
+package com.example.exercisetracker.models;
 
 import java.util.Objects;
 
@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+public
 class User {
 
     private @Id @GeneratedValue Long id;
@@ -17,7 +18,7 @@ class User {
 
     User() {}
 
-    User(String name, int height, int weight) {
+    public User(String name, int height, int weight) {
 
         this.name = name;
         this.height = height;
